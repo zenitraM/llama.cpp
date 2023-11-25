@@ -32,7 +32,7 @@
           else
             with pkgs; [ openblas ]
         );
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true;  };
         nativeBuildInputs = with pkgs; [ cmake ninja pkg-config ];
         cudatoolkit_joined = with pkgs; symlinkJoin {
           # HACK(Green-Sky): nix currently has issues with cmake findcudatoolkit
